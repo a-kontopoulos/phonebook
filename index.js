@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000',
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 var morgan = require('morgan')
-
-
-
 
 let persons = [
     {
@@ -90,7 +94,7 @@ app.post('/api/persons', (request, response) => {
   response.json(person)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
