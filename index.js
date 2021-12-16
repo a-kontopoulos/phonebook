@@ -7,6 +7,8 @@ const corsOptions ={
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
+app.use(express.static('build'))
+
 var morgan = require('morgan')
 
 let persons = [
